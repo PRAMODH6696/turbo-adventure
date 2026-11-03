@@ -1,3 +1,4 @@
+
 {
   "name": "E-CommerceAutomationSauceDemo",
   "version": "1.0.0",
@@ -13,9 +14,7 @@
     "automation",
     "testing"
   ],
-  "exclude": [
-    "node_modules",
-    "test-results",
-    "playwright-report"
-  ]
+  "devDependencies": {
+    "@playwright/test": "^1.64.1"
+  }
 }
