@@ -21,8 +21,7 @@ test('E2E_001 - Complete E-Commerce Purchase Journey',
         await expect(productsPage.productsHeading)
             .toHaveText('Products');
 
-        await expect(productsPage.productCards)
-            .toHaveCount(6);
+            await expect(productsPage.productItems).toHaveCount(6);
 
         // STEP 3: Add two products to cart
         await productsPage.addMultipleProductsToCart(2);

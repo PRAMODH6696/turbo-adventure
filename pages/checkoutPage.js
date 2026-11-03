@@ -51,15 +51,25 @@ class CheckoutPage {
         return await this.productNames.allTextContents();
     }
 
+
     async getProductPrices() {
-        const prices = await this.productPrices.allTextContents();
-        return prices.map(price => Number(price.replace('$', '')));
-    }
+    const prices = await this.page
+        .locator('.inventory_item_price')
+        .allTextContents();
+
+    return prices.map(price =>
+        Number(price.replace('$', '').trim())
+    );
+}
+
 
     async getItemTotal() {
-        const text = await this.itemTotal.textContent();
-        return Number(text.replace('Item total: $', ''));
-    }
+    const itemTotal = await this.page
+        .locator('.summary_subtotal_label')
+        .textContent();
+
+    return Number(itemTotal.replace('Item total: $', '').trim());
+}
 
     async getTax() {
         const text = await this.tax.textContent();
