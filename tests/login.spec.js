@@ -1,5 +1,5 @@
 import { test, expect } from '../fixtures/baseTest.js';
-import loginData from '../test-data/loginData.json' with { type: 'json' };
+import loginData from '../test-data/loginData.json'
 
 test.describe('SauceDemo Login Module', () => {
 

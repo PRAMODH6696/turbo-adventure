@@ -1,6 +1,6 @@
 import { test, expect } from '../fixtures/baseTest.js';
 import ProductsPage from '../pages/productsPage.js';
-import CartPage from '../pages/CartPage.js';
+import CartPage from '../pages/cartPage.js';
 
 test.describe('SauceDemo Shopping Cart Module', () => {
 

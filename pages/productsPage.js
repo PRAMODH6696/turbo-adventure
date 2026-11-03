@@ -45,12 +45,6 @@ class ProductsPage {
     async getCartCount() {
         return await this.cartBadge.textContent();
     }
-
-
-    async addFirstProductToCart() {
-    await this.addToCartButtons.first().click();
-}
-
     async addMultipleProductsToCart(count) {
     for (let i = 0; i < count; i++) {
         await this.addToCartButtons.nth(i).click();

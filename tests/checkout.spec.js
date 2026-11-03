@@ -1,7 +1,7 @@
 
 import { test, expect } from '../fixtures/baseTest.js';
 import ProductsPage from '../pages/productsPage.js';
-import CartPage from '../pages/CartPage.js';
+import CartPage from '../pages/cartPage.js';
 import CheckoutPage from '../pages/checkoutPage.js';
 
 let productsPage;
