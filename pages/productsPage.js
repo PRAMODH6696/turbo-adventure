@@ -15,13 +15,13 @@ class ProductsPage {
 
     async waitForProductsToLoad() {
         await this.productsHeading.waitFor({ state: 'visible' });
-        await this.productCards.first().waitFor({ state: 'visible' });
+        await this.productItems.first().waitFor({ state: 'visible' });
     }
 
     // Get total number of products
     async getProductCount() {
         await this.waitForProductsToLoad();
-        return await this.productCards.count();
+        return await this.productItems.count();
     }
 
     // Get all product names
