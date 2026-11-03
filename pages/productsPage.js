@@ -15,9 +15,7 @@ class ProductsPage {
     }
 
     // Get total number of products
-    async getProductCount() {
-        return await this.productCards.count();
-    }
+    
 
     // Get all product names
     async getProductNames() {
@@ -45,6 +43,12 @@ class ProductsPage {
     async getCartCount() {
         return await this.cartBadge.textContent();
     }
+
+
+    async addFirstProductToCart() {
+    await this.addToCartButtons.first().click();
+}
+
     async addMultipleProductsToCart(count) {
     for (let i = 0; i < count; i++) {
         await this.addToCartButtons.nth(i).click();
