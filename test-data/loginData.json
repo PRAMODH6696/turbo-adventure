@@ -1,0 +1,26 @@
+[
+    {
+        "testCase": "LGN_001 - Valid login @smoke @regression",
+        "username": "standard_user",
+        "password": "secret_sauce",
+        "expectedResult": "success"
+    },
+    {
+        "testCase": "LGN_002 - Invalid username @regression",
+        "username": "wrong_user",
+        "password": "secret_sauce",
+        "expectedResult": "error"
+    },
+    {
+        "testCase": "LGN_003 - Locked out user @regression",
+        "username": "locked_out_user",
+        "password": "secret_sauce",
+        "expectedResult": "locked"
+    },
+    {
+        "testCase": "LGN_004 - Empty username @regression",
+        "username": "",
+        "password": "secret_sauce",
+        "expectedResult": "usernameRequired"
+    }
+]
