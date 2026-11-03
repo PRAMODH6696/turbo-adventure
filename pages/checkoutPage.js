@@ -1,4 +1,3 @@
-
 class CheckoutPage {
     constructor(page) {
         this.page = page;
@@ -24,22 +23,22 @@ class CheckoutPage {
         this.confirmationMessage = page.locator('.complete-header');
         this.backHomeButton = page.locator('#back-to-products');
         this.confirmationDescription = this.page.locator('.complete-text');
-
     }
 
-
-
     async fillCustomerDetails(firstName, lastName, postalCode) {
+        await this.firstNameInput.waitFor({ state: 'visible' });
         await this.firstNameInput.fill(firstName);
         await this.lastNameInput.fill(lastName);
         await this.postalCodeInput.fill(postalCode);
     }
 
     async continueCheckout() {
+        await this.continueButton.waitFor({ state: 'visible' });
         await this.continueButton.click();
     }
 
     async cancelCheckout() {
+        await this.cancelButton.waitFor({ state: 'visible' });
         await this.cancelButton.click();
     }
 
@@ -48,52 +47,52 @@ class CheckoutPage {
     }
 
     async getProductNames() {
+        await this.productNames.first().waitFor({ state: 'visible' });
         return await this.productNames.allTextContents();
     }
 
 
     async getProductPrices() {
-    const prices = await this.page
-        .locator('.inventory_item_price')
-        .allTextContents();
-
-    return prices.map(price =>
-        Number(price.replace('$', '').trim())
-    );
-}
-
+        await this.productPrices.first().waitFor({ state: 'visible' });
+        const prices = await this.productPrices.allTextContents();
+        return prices.map(price => Number(price.replace('$', '').trim()));
+    }
 
     async getItemTotal() {
-    const itemTotal = await this.page
-        .locator('.summary_subtotal_label')
-        .textContent();
-
-    return Number(itemTotal.replace('Item total: $', '').trim());
-}
+        await this.itemTotal.waitFor({ state: 'visible' });
+        const text = await this.itemTotal.textContent();
+        return Number((text ?? '').replace(/^[^$]*\$/, '').trim());
+    }
 
     async getTax() {
+        await this.tax.waitFor({ state: 'visible' });
         const text = await this.tax.textContent();
-        return Number(text.replace('Tax: $', ''));
+        return Number((text ?? '').replace(/^[^$]*\$/, '').trim());
     }
 
     async getTotal() {
+        await this.total.waitFor({ state: 'visible' });
         const text = await this.total.textContent();
-        return Number(text.replace('Total: $', ''));
+        return Number((text ?? '').replace(/^[^$]*\$/, '').trim());
     }
 
     async finishCheckout() {
+        await this.finishButton.waitFor({ state: 'visible' });
         await this.finishButton.click();
     }
 
     async getConfirmationMessage() {
-    return await this.confirmationMessage.textContent();
+        await this.confirmationMessage.waitFor({ state: 'visible' });
+        return await this.confirmationMessage.textContent();
     }
 
     async getConfirmationDescription() {
-    return await this.confirmationDescription.textContent();
+        await this.confirmationDescription.waitFor({ state: 'visible' });
+        return await this.confirmationDescription.textContent();
     }
 
     async backHome() {
+        await this.backHomeButton.waitFor({ state: 'visible' });
         await this.backHomeButton.click();
     }
 }
