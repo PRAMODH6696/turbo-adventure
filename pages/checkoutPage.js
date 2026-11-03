@@ -51,6 +51,7 @@ class CheckoutPage {
         return await this.productNames.allTextContents();
     }
 
+
     async getProductPrices() {
         await this.productPrices.first().waitFor({ state: 'visible' });
         const prices = await this.productPrices.allTextContents();

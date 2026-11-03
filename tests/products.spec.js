@@ -22,11 +22,14 @@ test.describe('SauceDemo Product Module', () => {
     });
 
     // PRD_002 - Verify product count
-    test('PRD_002 - Verify product count @regression', async () => {
+    test('PRD_002 - Verify product count @regression', async ({ page }) => {
+        await expect(page).toHaveURL(/inventory.html/);
+
         const count = await productsPage.getProductCount();
 
-        expect(count).toBe(6);
-        console.log(`Total number of products: ${count}`);
+    expect(count).toBe(6);
+
+    console.log(`Total number of products: ${count}`);
     });
 
     // PRD_003 - Verify product names

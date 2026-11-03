@@ -100,20 +100,26 @@ test.describe('Checkout Module', () => {
 
     // CHK_007 - Verify item total
     test('CHK_007 - Verify item total @regression', async ({ page }) => {
-        await cartPage.clickCheckout();
 
-        await checkoutPage.fillCustomerDetails('Pramodh', 'S', '560001');
-        await checkoutPage.continueCheckout();
+    await cartPage.clickCheckout();
 
-        const prices = await checkoutPage.getProductPrices();
-        const expectedItemTotal = Number(
-            prices.reduce((sum, price) => sum + price, 0).toFixed(2)
-        );
+    await checkoutPage.fillCustomerDetails('Pramodh', 'S', '560001');
+    await checkoutPage.continueCheckout();
 
-        const actualItemTotal = await checkoutPage.getItemTotal();
+    const prices = await checkoutPage.getProductPrices();
 
-        expect(actualItemTotal).toBe(expectedItemTotal);
-    });
+    const expectedItemTotal = Number(
+        prices.reduce((sum, price) => sum + price, 0).toFixed(2)
+    );
+
+    const actualItemTotal = await checkoutPage.getItemTotal();
+
+    console.log('Product prices:', prices);
+    console.log('Expected item total:', expectedItemTotal);
+    console.log('Actual item total:', actualItemTotal);
+
+    expect(actualItemTotal).toBe(expectedItemTotal);
+});
 
     // CHK_008 - Verify tax calculation
     test('CHK_008 - Verify tax calculation @regression', async ({ page }) => {

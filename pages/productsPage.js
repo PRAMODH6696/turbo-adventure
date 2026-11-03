@@ -4,7 +4,7 @@ class ProductsPage {
 
         // Locators
         this.productsHeading = page.locator('.title');
-        this.productCards = page.locator('.inventory_item');
+        this.productItems = page.locator('.inventory_item');
         this.productNames = page.locator('.inventory_item_name');
         this.productPrices = page.locator('.inventory_item_price');
         this.sortDropdown = page.locator('.product_sort_container');
